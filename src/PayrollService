@@ -50,3 +50,23 @@ mysql> describe employee_payroll;
 | start  | date         | NO   |     | NULL    |                |
 +--------+--------------+------+-----+---------+----------------+
 4 rows in set (0.18 sec)
+
+--------------------------------------------------------------------
+UC3--> Inserting dat into a EmployeePayroll table
+--------------------------------------------------------------------
+mysql> insert into employee_payroll(name,salary,start)values
+    -> ('Srinivas','500000','2018-05-01'),
+    -> ('Anil','25000','2019-06-05'),
+    -> ('Babu','60000','2020-02-25');
+Query OK, 3 rows affected (0.93 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+----------+--------+------------+
+| id | name     | salary | start      |
++----+----------+--------+------------+
+|  1 | Srinivas | 500000 | 2018-05-01 |
+|  2 | Anil     |  25000 | 2019-06-05 |
+|  3 | Babu     |  60000 | 2020-02-25 |
++----+----------+--------+------------+
+3 rows in set (0.10 sec)
