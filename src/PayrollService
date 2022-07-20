@@ -28,3 +28,25 @@ mysql> show databases;
 
 mysql> USE payroll_service;
 Database changed
+
+-----------------------------------------------------------------------
+UC2-->Create a Table inside the Payroll database
+-----------------------------------------------------------------------
+mysql> create table employee_payroll(id int unsigned Not Null Auto_Increment,
+    -> name varchar(30) Not Null,
+    -> salary Double Not Null,
+    -> start Date Not Null,
+    -> Primary Key (id)
+    -> );
+Query OK, 0 rows affected (4.18 sec)
+
+mysql> describe employee_payroll;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int unsigned | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(30)  | NO   |     | NULL    |                |
+| salary | double       | NO   |     | NULL    |                |
+| start  | date         | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+4 rows in set (0.18 sec)
