@@ -75,3 +75,23 @@ mysql> select * from employee_payroll;
 +----+----------+--------+------------+
 3 rows in set (0.10 sec)
 
+--------------------------------------------------------------
+UC5-->Ability to retrieve salary data for particular employee
+---------------------------------------------------------------
+mysql> select salary from employee_payroll where name = 'Anil';
++--------+
+| salary |
++--------+
+|  25000 |
++--------+
+1 row in set (0.20 sec)
+
+mysql> select * from employee_payroll where start between cast('2019-01-01' as date) and date (now());
++----+------+--------+------------+
+| id | name | salary | start      |
++----+------+--------+------------+
+|  2 | Anil |  25000 | 2019-06-05 |
+|  3 | Babu |  60000 | 2020-02-25 |
++----+------+--------+------------+
+2 rows in set (0.18 sec)
+
