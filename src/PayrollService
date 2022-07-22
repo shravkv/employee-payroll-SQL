@@ -134,3 +134,72 @@ mysql> select * from employee_payroll;
 |  3 | Babu     | M      |  60000 | 2020-02-25 |
 +----+----------+--------+--------+------------+
 3 rows in set (0.00 sec)
+
+-------------------------------------------------------------------
+UC7-->Ability to find sum,avg,min,max and number males and females
+-------------------------------------------------------------------
+mysql> select sum(salary) from employee_payroll where gender ='M' group by gender;
++-------------+
+| sum(salary) |
++-------------+
+|      560000 |
++-------------+
+1 row in set (0.16 sec)
+
+mysql> select sum(salary) from employee_payroll where gender ='F' group by gender;
++-------------+
+| sum(salary) |
++-------------+
+|       25000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(salary) from employee_payroll where gender ='M' group by gender;
++-------------+
+| avg(salary) |
++-------------+
+|      280000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(salary) from employee_payroll where gender ='f' group by gender;
++-------------+
+| avg(salary) |
++-------------+
+|       25000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select max(salary) from employee_payroll where gender ='M' group by gender;
++-------------+
+| max(salary) |
++-------------+
+|      500000 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> select min(salary) from employee_payroll where gender ='M' group by gender;
++-------------+
+| min(salary) |
++-------------+
+|       60000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select gender , avg(salary) from employee_payroll group by gender;
++--------+-------------+
+| gender | avg(salary) |
++--------+-------------+
+| M      |      280000 |
+| F      |       25000 |
++--------+-------------+
+2 rows in set (0.17 sec)
+
+mysql> select gender , count(name) from employee_payroll group by gender;
++--------+-------------+
+| gender | count(name) |
++--------+-------------+
+| M      |           2 |
+| F      |           1 |
++--------+-------------+
+2 rows in set (0.00 sec)
