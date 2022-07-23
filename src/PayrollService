@@ -252,3 +252,47 @@ mysql> select * from employee_payroll;
 |  3 | Babu     | NULL        | ATP     |            | M      |  60000 | 2020-02-25 |
 +----+----------+-------------+---------+------------+--------+--------+------------+
 3 rows in set (0.01 sec)
+
+--------------------------------------------------------------------------------------------------------------
+UC9-->Ability to extend  employee_payroll table to have Basic Pay,Deductions, Taxable Pay,Income Tax, Net Pay
+-------------------------------------------------------------------------------------------------------------
+
+mysql> alter table employee_payroll  rename column salary to BasicPay;
+Query OK, 0 rows affected (1.28 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> alter table employee_payroll  add Deduction double not null after BasicPay;
+Query OK, 0 rows affected (0.57 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee_payroll  add TaxablePay double not null after Deduction;
+Query OK, 0 rows affected (0.58 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee_payroll  add NetPay double not null after TaxablePay;
+Query OK, 0 rows affected (0.56 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee_payroll  add Tax double not null after netpay;
+Query OK, 0 rows affected (0.40 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe employee_payroll;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int unsigned | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(30)  | NO   |     | NULL    |                |
+| phoneNumber | varchar(30)  | YES  |     | NULL    |                |
+| address     | varchar(250) | YES  |     | ATP     |                |
+| department  | varchar(250) | NO   |     | NULL    |                |
+| gender      | char(1)      | YES  |     | NULL    |                |
+| BasicPay    | double       | NO   |     | NULL    |                |
+| Deduction   | double       | NO   |     | NULL    |                |
+| TaxablePay  | double       | NO   |     | NULL    |                |
+| NetPay      | double       | NO   |     | NULL    |                |
+| Tax         | double       | NO   |     | NULL    |                |
+| start       | date         | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+12 rows in set (0.11 sec)
